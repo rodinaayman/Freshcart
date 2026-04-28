@@ -38,20 +38,20 @@ export default function VerifyResetCodePage() {
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full max-w-7xl">
-        
-        
+
+
         <AuthSideBanner />
 
-        
+
         <div className="w-full">
           <div className="bg-white rounded-2xl shadow-xl p-8 lg:p-12">
-            
-                     <div className="text-center mb-8">
+
+            <div className="text-center mb-8">
               <h1 className="text-2xl font-bold text-gray-800 mb-2">Verify Code</h1>
               <p className="text-gray-600">Enter the code sent to your email.</p>
             </div>
 
-                     <div className="flex items-center justify-center mb-8">
+            <div className="flex items-center justify-center mb-8">
               <div className="flex items-center">
                 <div className="w-10 h-10 rounded-full flex items-center justify-center text-sm font-semibold bg-green-600 text-white ring-4 ring-green-100">
                   <FaEnvelope className="text-xs" />
@@ -84,11 +84,11 @@ export default function VerifyResetCodePage() {
                   />
                 )}
               />
-{errors.resetCode && (
-  <p className="text-red-500 text-sm text-center">
-    {errors.resetCode.message?.toString()}
-  </p>
-)}
+              {errors.resetCode && (
+                <p className="text-red-500 text-sm text-center">
+                  {errors.resetCode.message?.toString()}
+                </p>
+              )}
               <Button type="submit" disabled={isLoading} className="w-full bg-green-600 hover:bg-green-700 h-12 text-lg">
                 {isLoading ? <FaSpinner className="animate-spin mr-2" /> : "Verify"}
               </Button>
