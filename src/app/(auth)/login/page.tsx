@@ -160,7 +160,7 @@ export default function LoginPage() {
                     )}
                   />
                 </div>
-                {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>}
+                {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email.message?.toString()}</p>}
               </div>
 
               <div className="space-y-2">
@@ -193,7 +193,7 @@ export default function LoginPage() {
                     {showPassword ? <FaEyeSlash className="h-5 w-5" /> : <FaEye className="h-5 w-5" />}
                   </button>
                 </div>
-                {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>}
+                {errors.password && <p className="text-red-500 text-sm mt-1">{errors.password.message?.toString()}</p>}
               </div>
 
               <div className="flex items-center space-x-2">

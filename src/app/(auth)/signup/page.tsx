@@ -185,7 +185,7 @@ export default function SignupPage() {
                     <Input {...field} id="name" placeholder="Ali" className="pl-14 h-16 text-xl border-2 rounded-xl" />
                   )} />
                 </div>
-                {errors.name && <p className="text-red-500 text-base mt-1">{errors.name.message}</p>}
+                {errors.name && <p className="text-red-500 text-base mt-1">{errors.name.message?.toString()}</p>}
               </div>
 
               <div className="space-y-2">
@@ -196,7 +196,7 @@ export default function SignupPage() {
                     <Input {...field} id="email" type="email" placeholder="ali@example.com" className="pl-14 h-16 text-xl border-2 rounded-xl" />
                   )} />
                 </div>
-                {errors.email && <p className="text-red-500 text-base mt-1">{errors.email.message}</p>}
+                {errors.email && <p className="text-red-500 text-base mt-1">{errors.email.message?.toString()}</p>}
               </div>
 
               <div className="space-y-2">
@@ -210,7 +210,7 @@ export default function SignupPage() {
                     {showPassword ? <FaEyeSlash className="h-6 w-6" /> : <FaEye className="h-6 w-6" />}
                   </button>
                 </div>
-                {errors.password && <p className="text-red-500 text-base mt-1">{errors.password.message}</p>}
+                {errors.password && <p className="text-red-500 text-base mt-1">{errors.password.message?.toString()}</p>}
               </div>
 
               <div className="space-y-2">
@@ -224,7 +224,7 @@ export default function SignupPage() {
                     {showRePassword ? <FaEyeSlash className="h-6 w-6" /> : <FaEye className="h-6 w-6" />}
                   </button>
                 </div>
-                {errors.rePassword && <p className="text-red-500 text-base mt-1">{errors.rePassword.message}</p>}
+                {errors.rePassword && <p className="text-red-500 text-base mt-1">{errors.rePassword.message?.toString()}</p>}
               </div>
 
               <div className="space-y-2">
@@ -235,7 +235,7 @@ export default function SignupPage() {
                     <Input {...field} id="phone" type="tel" placeholder="+1 234 567 8900" className="pl-14 h-16 text-xl border-2 rounded-xl" />
                   )} />
                 </div>
-                {errors.phone && <p className="text-red-500 text-base mt-1">{errors.phone.message}</p>}
+                {errors.phone && <p className="text-red-500 text-base mt-1">{errors.phone.message?.toString()}</p>}
               </div>
 
               <div className="flex items-center space-x-3">
