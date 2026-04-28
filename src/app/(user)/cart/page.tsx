@@ -68,7 +68,7 @@ export default function CartPage() {
     
     setActionLoading(productId);
     try {
-      await updateCartQuantity(productId, newCount, session!.accessToken);
+      await updateCartQuantity(productId, newCount, session!.accessToken!);
       setCartData(prev => {
         if (!prev) return null;
         const updatedProducts = prev.products.map(item => 
@@ -87,7 +87,7 @@ export default function CartPage() {
   const handleRemoveItem = async (productId: string) => {
     setActionLoading(productId);
     try {
-      await removeFromCart(productId, session!.accessToken);
+      await removeFromCart(productId, session!.accessToken!);
       removeFromContext(productId); 
       
       setCartData(prev => {
@@ -108,8 +108,7 @@ export default function CartPage() {
     
     try {
       await clearCart(session.accessToken);
-      setCartData(null); 
-      
+      setCartData(null);
       toast.success("Cart cleared successfully");
     } catch (error: any) {
       toast.error(error.message || "Failed to clear cart");
@@ -274,7 +273,6 @@ export default function CartPage() {
               <Link href="/products" className="text-green-600 hover:text-primary-700 font-medium text-sm flex items-center gap-2">
                 <span>←</span> Continue Shopping
               </Link>
-              
               <button 
                 onClick={handleClearCart}
                 className="group flex items-center gap-2 text-sm text-gray-400 hover:text-red-500 transition-colors disabled:opacity-50"
