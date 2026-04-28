@@ -5,6 +5,8 @@ import NewsletterSection from '@/components/home/NewsletterSection'
 import FeaturedProducts from '@/components/home/Products/Products'
 import { getProducts } from '@/services/products.service'
 
+export const dynamic = 'force-dynamic';
+
 export default async function Homepage() {
   const data = await getProducts(20);
   const products = data.data || [];

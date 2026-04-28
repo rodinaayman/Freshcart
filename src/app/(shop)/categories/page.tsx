@@ -10,6 +10,9 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 
+export const dynamic = 'force-dynamic';
+
+
 export default async function CategoriesPage() {
   const data = await getCategories();
   const categories = data.data || [];
