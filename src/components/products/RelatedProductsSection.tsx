@@ -51,9 +51,10 @@ export default function RelatedProductsSection({ products }: RelatedProductsSect
             nextEl: nextRef.current,
           }}
           onInit={(swiper) => {
-            if (swiper.params.navigation) {
-              swiper.params.navigation.prevEl = prevRef.current;
-              swiper.params.navigation.nextEl = nextRef.current;
+            if (swiper.params.navigation && swiper.params.navigation !== true) {
+              const navigation = swiper.params.navigation as any;
+              navigation.prevEl = prevRef.current;
+              navigation.nextEl = nextRef.current;
             }
             
             swiper.navigation?.init();
