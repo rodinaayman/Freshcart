@@ -84,8 +84,11 @@ export default function VerifyResetCodePage() {
                   />
                 )}
               />
-              {errors.resetCode && <p className="text-red-500 text-sm text-center">{errors.resetCode.message}</p>}
-
+{errors.resetCode && (
+  <p className="text-red-500 text-sm text-center">
+    {errors.resetCode.message?.toString()}
+  </p>
+)}
               <Button type="submit" disabled={isLoading} className="w-full bg-green-600 hover:bg-green-700 h-12 text-lg">
                 {isLoading ? <FaSpinner className="animate-spin mr-2" /> : "Verify"}
               </Button>
