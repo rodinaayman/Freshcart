@@ -18,7 +18,7 @@ export default function RelatedProductsSection({ products }: RelatedProductsSect
 
   return (
     <section className="py-12 bg-white">
-      <div className=" mx-auto px-4">
+      <div className="mx-auto px-4">
         
         <div className="flex justify-between items-center mb-6">
           <div className="flex items-center gap-3">
@@ -51,10 +51,13 @@ export default function RelatedProductsSection({ products }: RelatedProductsSect
             nextEl: nextRef.current,
           }}
           onInit={(swiper) => {
-            swiper.params.navigation.prevEl = prevRef.current;
-            swiper.params.navigation.nextEl = nextRef.current;
-            swiper.navigation.init();
-            swiper.navigation.update();
+            if (swiper.params.navigation) {
+              swiper.params.navigation.prevEl = prevRef.current;
+              swiper.params.navigation.nextEl = nextRef.current;
+            }
+            
+            swiper.navigation?.init();
+            swiper.navigation?.update();
           }}
           spaceBetween={20}
           breakpoints={{
