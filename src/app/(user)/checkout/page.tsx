@@ -122,11 +122,11 @@ export default function CheckoutPage() {
       };
 
       if (paymentMethod === "cash") {
-        await createCashOrder(cart._id, session!.accessToken, shippingAddress);
+        await createCashOrder(cart._id, session!.accessToken!, shippingAddress);
         toast.success("Order Placed Successfully!");
-        router.push("/orders/allorders");
+        router.push("/orders");
       } else {
-        const res = await createCheckoutSession(cart._id, session!.accessToken, shippingAddress);
+        const res = await createCheckoutSession(cart._id, session!.accessToken!, shippingAddress);
         if (res.session && res.session.url) {
           window.location.href = res.session.url;
         } else {
