@@ -40,7 +40,7 @@ export const authOptions: NextAuthOptions = {
           const userId = extractIdFromToken(data.token);
 
           return {
-            id: userId,
+            id: userId ?? undefined, 
             name: data.user?.name,
             email: data.user?.email,
             token: data.token,
@@ -54,16 +54,16 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        token.accessToken = user.token;
-        token.id = user.id; 
+        token.accessToken = (user as any).token;
+        token.id = (user as any).id; 
       }
       return token;
     },
     async session({ session, token }) {
-      session.accessToken = token.accessToken;
+      session.accessToken = token.accessToken as string;
       
       if (session.user) {
-        session.user.id = token.id; 
+        session.user.id = token.id as string; 
       }
       
       return session;
