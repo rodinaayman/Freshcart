@@ -1,6 +1,8 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
+export const dynamic = "force-dynamic"; 
+
 const extractIdFromToken = (token: string) => {
   try {
     const base64Payload = token.split('.')[1];
@@ -11,8 +13,10 @@ const extractIdFromToken = (token: string) => {
   }
 };
 
-const authOptions = {
-  secret: process.env.NEXTAUTH_SECRET,
+const handler = NextAuth({
+  secret: process.env.NEXTAUTH_SECRET, 
+  session: { strategy: "jwt" },
+  
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -29,7 +33,7 @@ const authOptions = {
         const data = await res.json();
         if (res.ok && data.token) {
           return {
-            id: extractIdFromToken(data.token) ?? "user",
+            id: extractIdFromToken(data.token) || "user",
             name: data.user?.name,
             email: data.user?.email,
             token: data.token
@@ -39,6 +43,7 @@ const authOptions = {
       }
     })
   ],
+  
   callbacks: {
     async jwt({ token, user }: any) {
       if (user) {
@@ -55,10 +60,7 @@ const authOptions = {
   },
   pages: {
     signIn: "/login"
-  },
-  debug: false, 
-};
-
-const handler = NextAuth(authOptions);
+  }
+});
 
 export { handler as GET, handler as POST };
