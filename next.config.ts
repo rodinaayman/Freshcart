@@ -1,7 +1,11 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-
+  experimental: {
+    serverActions: {
+      allowedOrigins: ["freshcart-8pmc.vercel.app"]
+    }
+  },
   images: {
     remotePatterns: [
       {
@@ -19,15 +23,13 @@ const nextConfig: NextConfig = {
         hostname: 'ecommerce.routemisr.com',
         pathname: '/Route-Academy-brands/**',
       },
-         {
+      {
         protocol: 'https',
-        hostname: 'img.icons8.com', 
+        hostname: 'img.icons8.com',
         pathname: '/**',
       },
     ],
   }
 };
-
-
 
 export default nextConfig;
