@@ -1,7 +1,8 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-export const dynamic = "force-dynamic"; 
+export const runtime = "nodejs";
+export const dynamic = "force-dynamic";
 
 const extractIdFromToken = (token: string) => {
   try {
